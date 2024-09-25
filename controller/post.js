@@ -139,3 +139,18 @@ exports.deletePost = async (req, res) => {
     res.status(500).send(error);
   }
 };
+
+// Delete a post by Admin
+exports.deletePost = async (req, res) => {
+  try {
+    const post = await Post.findOneAndDelete({ _id: req.params.id});
+
+    if (!post) {
+      return res.status(404).send("Not authorized to delete");
+    }
+
+    res.send("Post has been deleted");
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
