@@ -9,6 +9,7 @@ const comments = require('./routes/comments');
 const verification = require('./routes/verification');
 const isAdmin = require('./routes/admin');
 const errorHandler = require('./middleware/errorHandler');
+const forgotPassword  = require('./routes/forgotPassword');
 const app = express();
 
 
@@ -28,6 +29,7 @@ app.use(`${api}/likes`, likes);
 app.use(`${api}/comments`, comments);
 app.use(`${api}/verify-email`, verification);
 app.use(`${api}/make-admin`, isAdmin);
+app.use(`${api}/forgot-password`, forgotPassword);
 
 
 app.use(errorHandler)
